@@ -1,0 +1,8 @@
+---
+
+  - name: Send Blueprint
+    shell: 'curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://$(hostname):8080/api/v1/blueprints/multinode-hdp -d @/tmp/resource/cluster_configuration.json'
+
+  - name: Register and Deploy Blueprint
+    shell: 'curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://$(hostname):8080/api/v1/clusters/mutli-node -d @/tmp/resource/hostmapping.json'
+

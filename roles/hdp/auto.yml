@@ -1,0 +1,5 @@
+---
+- hosts: ambari
+  tasks:
+  - include_role:
+      name:  hdp

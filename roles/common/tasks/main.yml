@@ -1,0 +1,40 @@
+---
+   - name: Installing packages
+     yum: name={{item}} state=latest
+     with_items:
+      - ntp
+      - wget
+      - net-tools
+ 
+   - name: Make sure NTP is stopped
+     service: name=ntpd state=started enabled=yes
+  
+   - name: Sync time initialy
+     shell: ntpdate -u 192.168.1.194
+
+   - name: Disable SELinux at next reboot
+     selinux: 
+      state: disabled
+
+   - name: be sure firewalld is disabled
+     systemd: name=firewalld enabled=no
+
+   - name: be sure firewalld is stopped
+     systemd: name=firewalld state=stopped
+
+   - name: remove java  packages
+     yum: name=java* state=absent
+  
+   - name: Copy jdk 8 rpm to server
+     copy:
+      src: /tmp/resource/jdk-8u131-linux-x64.rpm
+      dest: /tmp/resource/jdk-8u131-linux-x64.rpm
+
+   - name: Install package jdk
+     yum: name=/tmp/resource/jdk-8u131-linux-x64.rpm state=present
+ 
+   - name: copy ambari repo file
+     copy:
+      src: /tmp/resource/ambari.repo
+      dest: /etc/yum.repos.d/ambari.repo
+

@@ -1,0 +1,14 @@
+---
+- name: copy file to removte
+  copy:
+   src: /root/ambari.repo
+   dest: /etc/yum.repos.d/ambari.repo
+#- name: Copy rpm file to server
+#   copy:
+#    src: /root/jdk-8u131-linux-x64.rpm
+#    dest: /root/jdk-8u131-linux-x64.rpm
+
+#- name: Install package.
+#   yum:
+#    name: /root/jdk-8u131-linux-x64.rpm
+#    state: present

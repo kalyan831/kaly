@@ -1,0 +1,18 @@
+[master-nodes]
+master ansible_host=ansi-node1.zalonilabs.com
+
+[slave-nodes]
+slv1 ansible_host=ansi-node2.zalonilabs.com
+slv2 ansible_host=ansi-node3.zalonilabs.com
+
+[all-nodes]
+master ansible_host=ansi-node1.zalonilabs.com
+slv3 ansible_host=ansi-node2.zalonilabs.com
+slv2 ansible_host=ansi-node3.zalonilabs.com
+
+#[auto]
+#node.zaloni.com
+
+#[ambari]
+#master ansible_host=master.zaloni.com
+#ambari1 ansible_host=ansible.zaloni.com

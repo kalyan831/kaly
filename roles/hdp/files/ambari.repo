@@ -1,0 +1,8 @@
+#VERSION_NUMBER=2.6.1.5-3
+[ambari-2.6.1.5]
+name=ambari Version - ambari-2.6.1.5
+baseurl=http://master.zaloni.com/ambari/centos7/2.6.1.5-3
+gpgcheck=0
+enabled=1
+priority=1
+

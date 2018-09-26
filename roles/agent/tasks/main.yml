@@ -1,0 +1,23 @@
+---
+      - name: install ambari-agent
+        yum: name=ambari-agent state=latest
+
+      - name: Configure the Ambari agent
+        lineinfile: dest=/etc/ambari-agent/conf/ambari-agent.ini
+         regexp='^hostname\s*='
+         line='hostname={{ hostvars[groups['master-nodes'][0]].ansible_host }}'
+         state=present     
+ 
+      - name: Configure the Ambari Agents to use TLS 1.2
+        ini_file:
+         path: /etc/ambari-agent/conf/ambari-agent.ini
+         create: no
+         section: "security"
+         option: "force_https_protocol"
+         value: "PROTOCOL_TLSv1_2"
+         state: present
+        notify: Restart ambari-agent
+
+      - name: Ensure ambari-agent is started
+        service: name=ambari-agent state=started enabled=yes
+

@@ -1,0 +1,27 @@
+--- 
+-
+  hosts: all-nodes
+  tasks:
+    -
+      include_role:
+        name: common
+- 
+  hosts: master-nodes
+  tasks: 
+    - 
+      include_role: 
+        name: ambari
+- 
+  hosts: all-nodes
+  tasks: 
+    - 
+      include_role: 
+        name: agent
+
+-
+  hosts: master-nodes
+  tasks:
+    -
+      include_role:
+       name: blue
+

@@ -1,0 +1,6 @@
+---
+# tasks file for /etc/ansible/roles/hdp
+- import_tasks : common.yml
+- import_tasks : ambari.yml
+- import_tasks : ambari-agent.yml
+- import_tasks : blue.yml

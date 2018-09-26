@@ -1,0 +1,14 @@
+---
+- hosts: ambari
+  tasks:
+  - name: install ambari-agent
+    yum: name=ambari-agent state=latest
+
+  - name: Configure the Ambari agent
+    lineinfile: dest=/etc/ambari-agent/conf/ambari-agent.ini
+              regexp='^hostname\s*='
+              line='hostname=master.zaloni.com'
+              state=present
+
+  - name: Ensure ambari-server is started
+    service: name=ambari-agent state=restarted enabled=yes
